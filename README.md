@@ -18,7 +18,7 @@ Unified async Python SDK for Telegram Gifts marketplaces (Tonnel, Portals, Fragm
 | Portals | scaffolded | scaffolded | — | — |
 | Fragment | scaffolded | scaffolded | — | — |
 
-Tonnel is fully implemented and tested. Portals and Fragment are interface stubs that raise `NotImplementedYetError` with documented hints — contributions welcome (see CONTRIBUTING.md).
+Tonnel is fully implemented and tested. Portals is an interface stub, while Fragment is fully implemented that raise `NotImplementedYetError` with documented hints — contributions welcome (see CONTRIBUTING.md).
 
 Write operations (`buyGift`, `listGift`) are deliberately out of scope to keep the public SDK conservative; downstream users can reverse-engineer the marketplace signing protocol themselves.
 
@@ -74,7 +74,7 @@ asyncio.run(main())
   - `fetch_floor_stats() -> list[FloorStats]`
   - `fetch_balance() -> BalanceInfo`
 - `PortalsClient` — stub (raises `NotImplementedYetError`)
-- `FragmentClient` — stub (raises `NotImplementedYetError`)
+- `FragmentClient` — fully implemented
 - `UnifiedClient(tonnel_auth=, portals_auth=, fragment_auth=)` — aggregates across venues
 
 ### Models (pydantic v2)
