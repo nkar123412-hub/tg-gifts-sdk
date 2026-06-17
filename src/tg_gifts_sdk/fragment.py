@@ -84,7 +84,7 @@ class FragmentClient:
     def __init__(
         self,
         *,
-        auth_data: str,
+        auth_data: str | None = None,
         timeout: float = 30.0,
         proxy: str | None = None,
         max_concurrent: int = 4,
@@ -122,7 +122,7 @@ class FragmentClient:
         page: int = 1,
         asset: str = "TON",
     ) -> list[Listing]:
-        self._require_auth()
+        # Auth is optional for public listings search
         
         # Fragment uses a different API structure than Tonnel.
         # Based on pyfragment, we send a request to "searchAuctions".

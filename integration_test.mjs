@@ -1,0 +1,1 @@
+import { FragmentClient } from './src/fragment.ts'; async function runTest() { const client = new FragmentClient(); try { const listings = await client.fetch_listings('username'); console.log('Found ' + listings.length + ' listings.'); process.exit(0); } catch (e) { console.error(e); process.exit(1); } } runTest();
