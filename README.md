@@ -32,24 +32,13 @@ pip install tg-gifts-sdk
 
 ```python
 import asyncio
-from tg_gifts_sdk import TonnelClient, find_deals
+from tg_gifts_sdk.fragment import FragmentClient
 
 async def main():
-    auth = "user=...&hash=..."  # see "Capturing auth_data" below
-
-    async with TonnelClient(auth_data=auth) as client:
-        listings = await client.fetch_listings(gift_name="Plush Pepe", limit=30)
-        stats = await client.fetch_floor_stats()
-        balance = await client.fetch_balance()
-
-    print(f"Balance: {balance.balance_ton} TON ({balance.memo=})")
-    print(f"Found {len(listings)} Plush Pepe listings")
-
-    deals = find_deals(listings, stats, min_discount=0.15)
-    for d in deals:
-        print(f"  {d.listing.gift_name} #{d.listing.gift_num}: "
-              f"{d.listing.price} TON (fair ~{d.fair_value_ton:.1f}, "
-              f"{d.discount_pct*100:.1f}% discount)")
+    async with FragmentClient(auth_data="your_auth_data") as client:
+        # Fetch all listings for a specific gift
+        listings = await client.fetch_listings(gift_name="username")
+        print(f"Found {len(listings)} listings")
 
 asyncio.run(main())
 ```
